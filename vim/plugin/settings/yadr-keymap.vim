@@ -1,15 +1,8 @@
-" Arpeggio lets us define key-chord combos (simultaneous key presses)
-call arpeggio#load()
-
 " ========================================
 " General vim sanity improvements
 " ========================================
 "
 "
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-let mapleader=","
-
 " alias yw to yank the entire word 'yank inner word'
 " even if the cursor is halfway inside the word
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
@@ -72,6 +65,9 @@ vmap ,{ c{<C-R>"}<ESC>
 " gary bernhardt's hashrocket
 imap <c-l> <space>=><space>
 
+" Semicolon at end of line by typing ;;
+inoremap ;; <C-o>A;<esc>
+
 " Change inside various enclosures with Cmd-" and Cmd-'
 " The f makes it find the enclosure so you don't have
 " to be standing inside it
@@ -113,6 +109,8 @@ autocmd FileType ruby map <buffer> <D-j> ]m
 autocmd FileType ruby map <buffer> <D-k> [m
 autocmd FileType rspec map <buffer> <D-j> }
 autocmd FileType rspec map <buffer> <D-k> {
+autocmd FileType javascript map <buffer> <D-k> }
+autocmd FileType javascript map <buffer> <D-j> {
 
 
 " Command-/ to toggle comments
@@ -236,7 +234,6 @@ map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 
 " Source current file Cmd-% (good for vim development)
 map <D-%> :so %<CR>
-
 
 " ,hp = html preview
 map <silent> ,hp :!open -a Safari %<CR><CR>
